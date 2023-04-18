@@ -47,6 +47,8 @@ class Dev(Configuration):
 #       'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 #   ]
 
+  AUTH_USER_MODEL = "blango_auth.User"
+
   # Application definition
 
   INSTALLED_APPS = [
@@ -56,11 +58,13 @@ class Dev(Configuration):
       'django.contrib.sessions',
       'django.contrib.messages',
       'django.contrib.staticfiles',
+      'blango_auth',
       'blog',
       # extensions
       'crispy_forms',
       'crispy_bootstrap5',
       'debug_toolbar',
+      
 
   ]
 
@@ -208,7 +212,7 @@ class Dev(Configuration):
 
   }
 
-  INTERNAL_IPS = ["192.168.10.93"]
+  INTERNAL_IPS = ["192.168.11.179"] #["192.168.10.93"]
 
 
 class Prod(Dev):
