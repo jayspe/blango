@@ -62,6 +62,7 @@ class Dev(Configuration):
       'django.contrib.staticfiles',
       'blango_auth',
       'blog',
+      'rest_framework', #added for serializers
       
       # extensions
       'crispy_forms',
