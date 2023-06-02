@@ -30,7 +30,7 @@ class Dev(Configuration):
   # DEBUG = True
   DEBUG = values.BooleanValue(True)
 
-  ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io"])
+  ALLOWED_HOSTS = values.ListValue(["localhost", "127.0.0.1","0.0.0.0", ".codio.io"])
   #ALLOWED_HOSTS = ['*']
   X_FRAME_OPTIONS = 'ALLOW-FROM ' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'
   CSRF_COOKIE_SAMESITE = None
@@ -63,6 +63,7 @@ class Dev(Configuration):
       'blango_auth',
       'blog',
       'rest_framework', #added for serializers
+      'rest_framework.authtoken',
       
       # extensions
       'crispy_forms',
@@ -74,9 +75,18 @@ class Dev(Configuration):
       "allauth.account",
       "allauth.socialaccount",
       "allauth.socialaccount.providers.google",
-      
 
   ]
+  
+
+  REST_FRAMEWORK = {
+      "DEFAULT_AUTHENTICATION_CLASSES": [
+          "rest_framework.authentication.BasicAuthentication",
+          "rest_framework.authentication.SessionAuthentication",
+          "rest_framework.authentication.TokenAuthentication",
+      ]
+  }
+  
 
   SITE_ID = 1
   ACCOUNT_USER_MODEL_USERNAME_FIELD = None
