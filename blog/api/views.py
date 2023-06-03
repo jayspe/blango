@@ -1,5 +1,5 @@
 from blango_auth.models import User
-from blog.api.serializers import PostSerializer, UserSerializer
+from blog.api.serializers import PostSerializer, UserSerializer, PostDetailSerializer
 
 from rest_framework import generics
 
@@ -18,7 +18,8 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [AuthorModifyOrReadOnly | IsAdminUserForObject]
     queryset = Post.objects.all()
-    serializer_class = PostSerializer
+    # serializer_class = PostSerializer
+    serializer_class = PostDetailSerializer #updated
     
 
 class UserDetail(generics.RetrieveAPIView):
