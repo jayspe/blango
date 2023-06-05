@@ -64,6 +64,7 @@ class Dev(Configuration):
       'blog',
       'rest_framework', #added for serializers
       'rest_framework.authtoken',
+      'drf_yasg',
       
       # extensions
       'crispy_forms',
@@ -251,6 +252,13 @@ class Dev(Configuration):
   #REGISTRATION_OPEN = False
 
   
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+        "Basic": {"type": "basic"},
+    }
+}
+
 
 class Prod(Dev):
     DEBUG = False
