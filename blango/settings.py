@@ -67,6 +67,7 @@ class Dev(Configuration):
       'rest_framework.authtoken',
       'drf_yasg',
       'django_filters',
+      'versatileimagefield',
       
       # extensions
       'crispy_forms',
@@ -175,7 +176,7 @@ class Dev(Configuration):
         "ALTERNATIVE_DATABASE_URL",
         default=f"sqlite:///{BASE_DIR}/alternative_db.sqlite3",
     ),
-}
+  }
 
   # Password validation
   # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -277,17 +278,22 @@ class Dev(Configuration):
   #REGISTRATION_OPEN = False
 
   
-SWAGGER_SETTINGS = {
+  SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
         "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
         "Basic": {"type": "basic"},
     }
-}
+  }
 
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
-}
+  SIMPLE_JWT = {
+     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+  }
+
+  # Media
+  MEDIA_ROOT = BASE_DIR / "media"
+  MEDIA_URL = "/media/"
+
 
 class Prod(Dev):
     DEBUG = False
