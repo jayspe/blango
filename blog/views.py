@@ -61,3 +61,6 @@ def get_ip(request):
   """ view to return the IP address that’s connected to Django"""
   from django.http import HttpResponse
   return HttpResponse(request.META['REMOTE_ADDR'])
+
+def post_table(request):
+    return render(request, "blog/post-table.html")
